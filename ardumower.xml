@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot name="ardumower">
+
+  <material name="metal">
+    <unreal_material path="Material'/AirSim/VehicleAdv/SUV/AutomotiveMaterials/Materials/Metal/M_Metal.M_Metal'"/>
+  </material>
+  <material name="plastic">
+    <unreal_material path="Material'/AirSim/VehicleAdv/SUV/AutomotiveMaterials/Materials/Plastic/M_Plastic_Matte.M_Plastic_Matte'"/>
+  </material>
+  
+  <link name="base_link">
+  <visual>
+		<geometry>
+			<mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\base_link_1.STL" reverse_normals="true" scale_factor="100"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<material name="metal"/>
+  </visual>
+  <collision>
+        <geometry>
+            <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\base_link_1.STL" reverse_normals="true" scale_factor="100" dynamic_collision_type="vhacd" vhacd_concavity="0.2" vhacd_output_folder_path="D:\UnrealProject\Ardumower\vhacd\base"/>
+        </geometry>
+    </collision>
+    <inertial>
+		 <origin
+        xyz="-0.0592990832026495 0 0.0344792277888084"
+        rpy="0 0 0" />
+		<mass value="4"/>
+		<inertia ixx="0.026847" ixy="0" ixz="0" iyy="0.05925" iyz="0.0" izz="0.08194"/>
+    </inertial>
+  </link>
+
+  <link name="lwheel_link">
+  <visual>
+		<geometry>
+			<mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\wheel.STL" reverse_normals="true" scale_factor="100"/>
+		</geometry>
+		<material name="metal"/>
+  </visual>
+  <collision>
+        <geometry>
+			<mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\wheel.STL" reverse_normals="false" scale_factor="100" dynamic_collision_type="vhacd" vhacd_concavity="0.2" vhacd_output_folder_path="D:\UnrealProject\Ardumower\vhacd\lwheel"/>
+		</geometry>
+  </collision>
+  <inertial>
+	<origin
+        xyz="0 0 -0.004"
+        rpy="0 0 0" />
+		<mass value="0.32081"/>
+		<inertia ixx="0.0012027" ixy="0.0" ixz="0.0" iyy="0.0012027" iyz="0.0" izz="0.002402"/>
+  </inertial>
+  </link>
+
+  <joint name="base_lwheel" type="continuous">
+		<parent link="base_link"/>
+		<child link="lwheel_link"/>
+		<origin rpy="-1.5708 0 0" xyz="0 -0.176 0"/>
+		<axis rpy="0 0 0" xyz="0 1 0"/>
+		<limit lower="0" upper="0" effort="20" velocity="0.3"/>
+  </joint>
+
+  <link name="rwheel_link">
+  <visual>
+		<geometry>
+			<mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\wheel.STL" reverse_normals="true" scale_factor="100"/>
+		</geometry>
+		<material name="metal"/>
+  </visual>
+  <collision>
+        <geometry>
+            <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\wheel.STL" reverse_normals="false" scale_factor="100" dynamic_collision_type="vhacd" vhacd_concavity="0.2" vhacd_output_folder_path="D:\UnrealProject\Ardumower\vhacd\rwheel"/>
+        </geometry>
+   </collision>
+   <inertial>
+	<origin
+        xyz="0 0 0.004"
+        rpy="0 0 0" />
+		<mass value="0.32081"/>
+		<inertia ixx="0.0012027" ixy="0.0" ixz="0.0" iyy="0.0012027" iyz="0.0" izz="0.002402"/>
+   </inertial>
+  </link>
+
+  <joint name="base_rwheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="rwheel_link"/>
+    <origin rpy="1.570796 0 0" xyz="0 0.176 0"/>
+	<axis rpy="0 0 0" xyz="0 1 0"/>
+	<limit lower="0" upper="0" effort="20" velocity="0.3"/>
+  </joint>
+  
+  <link name="bwheel_hold_link">
+    <visual>
+      <geometry>
+        <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\back_hold.STL" reverse_normals="true" scale_factor="100"/>
+      </geometry>
+	  <material name="metal"/>
+    </visual>
+    <collision>
+        <geometry>
+            <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\back_hold.STL" reverse_normals="true" scale_factor="100" dynamic_collision_type="vhacd" vhacd_concavity="0.2" vhacd_output_folder_path="D:\UnrealProject\Ardumower\vhacd\back_hold"/>
+        </geometry>
+    </collision>
+    <inertial>
+		<origin
+        xyz="-0.012851 0 -0.036115"
+        rpy="0 0 0" />
+		<mass value="0.48043"/>
+		<inertia ixx="0.0007295" ixy="0.0" ixz="-0.00025738" iyy="0.00079195" iyz="0.0" izz="0.00035283"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_bwheel_hold" type="continuous">
+    <parent link="base_link"/>
+    <child link="bwheel_hold_link"/>
+    <axis rpy="0 0 0" xyz="0 0 -1"/>
+	<origin rpy="0 0 0" xyz="-0.32481 0 0.0391"/>
+	<limit lower="0" upper="0" effort="20" velocity="0.3"/>
+  </joint>
+  
+  <link name="bwheel_link">
+    <visual>
+      <geometry>
+        <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\back_wheel.STL" reverse_normals="true" scale_factor="100"/>
+      </geometry>
+      <material name="metal"/>
+    </visual>
+    <collision>
+        <geometry>
+            <mesh type="stl_ascii" location="D:\UnrealProject\Ardumower\meshes_ascii\back_wheel.STL" reverse_normals="true" scale_factor="100" dynamic_collision_type="vhacd" vhacd_concavity="0.2" vhacd_output_folder_path="D:\UnrealProject\Ardumower\vhacd\bwheel"/>
+        </geometry>
+    </collision>
+	<inertial>
+		<origin
+			xyz="-2.8321E-06 -7.2915E-08 2.7719E-07"
+			rpy="0 0 0" />
+		<mass value="0.14922"/>
+		<inertia ixx="0.00019094" ixy="0.0" ixz="0.0" iyy="0.00019095" iyz="0.0" izz="0.00036861"/>
+    </inertial>
+  </link>
+  
+  <joint name="bwheel_hold_to_bwheel" type="continuous">
+    <parent link="bwheel_hold_link"/>
+    <child link="bwheel_link"/>
+	<origin rpy="1.5708 1.0692 3.1416" xyz="-0.04 -0.001 -0.0955"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="20" velocity="0.3"/>
+  </joint>
+  
+</robot>

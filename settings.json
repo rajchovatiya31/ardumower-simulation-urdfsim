@@ -1,0 +1,136 @@
+{
+    "SettingsVersion": 1.2,
+    "SimMode": "UrdfBot",
+    "PawnPaths": {
+        "UrdfBot": {
+            "UrdfFile": "D:/UnrealProject/Ardumower/ardumower.xml"
+        }
+    },
+	"CameraDefaults": {
+		"CaptureSettings": [
+		{
+			"ImageType": 0,
+			"Width": 320,
+			"Height": 240,
+			"FOV_Degrees": 90,
+			"AutoExposureSpeed": 100,
+			"AutoExposureBias": 0,
+			"AutoExposureMaxBrightness": 0.64,
+			"AutoExposureMinBrightness": 0.03,
+			"MotionBlurAmount": 0,
+			"TargetGamma": 1.0,
+			"ProjectionMode": "",
+			"OrthoWidth": 5.12
+		}
+		]
+	},
+	"Recording": {
+    "RecordOnMove": false,
+    "RecordInterval": 0.5,
+    "Cameras": [
+        { "CameraName": "Follow", "ImageType": 0, "PixelsAsFloat": false, "Compress": true },
+		{ "CameraName": "Main", "ImageType": 5, "PixelsAsFloat": false, "Compress": true },
+		{ "CameraName": "Main", "ImageType": 0, "PixelsAsFloat": false, "Compress": true }
+    ]
+	},
+	"SubWindows": [
+    {"WindowID": 0, "CameraName": "Follow", "ImageType": 0, "Visible": false},
+    {"WindowID": 1, "CameraName": "Main", "ImageType": 5, "Visible": false},
+    {"WindowID": 2, "CameraName": "Main", "ImageType": 0, "Visible": false}    
+  ],
+    "Vehicles": {
+        "UrdfBot": {
+            "VehicleType": "UrdfBot",
+            "DebugSymbolScale": 0,
+            "CollisionBlacklist": [
+                {
+                    "BotMesh": "lwheel_link", 
+                    "ExternalActorRegex": "Landscape"
+                },
+                {
+                    "BotMesh": "rwheel_link", 
+                    "ExternalActorRegex": "Landscape"
+                },
+				{
+                    "BotMesh": "bwheel_link", 
+                    "ExternalActorRegex": "Landscape"
+                }
+            ],
+			"Cameras": {
+                "Follow": {
+					"CaptureSettings": [
+					{
+						"ImageType": 0,
+						"Width": 1280,
+						"Height": 1080,
+						"FOV_Degrees": 90,
+						"AutoExposureSpeed": 100,
+						"AutoExposureBias": 0,
+						"AutoExposureMaxBrightness": 0.64,
+						"AutoExposureMinBrightness": 0.03,
+						"MotionBlurAmount": 0,
+						"TargetGamma": 1.0,
+						"ProjectionMode": "",
+						"OrthoWidth": 5.12
+					}
+					],
+                    "X": 200, 
+                    "Y": 0, 
+                    "Z": 100,
+                    "Pitch": 0, 
+                    "Roll": 0, 
+                    "Yaw": 0,
+                    "AttachLink": "base_link"
+                },
+				"Main": {
+					"CaptureSettings": [
+					{
+						"ImageType": 5,
+						"Width": 320,
+						"Height": 240,
+						"FOV_Degrees": 90,
+						"AutoExposureSpeed": 100,
+						"AutoExposureBias": 0,
+						"AutoExposureMaxBrightness": 0.64,
+						"AutoExposureMinBrightness": 0.03,
+						"MotionBlurAmount": 0,
+						"TargetGamma": 1.0,
+						"ProjectionMode": "",
+						"OrthoWidth": 5.12
+					}
+					],
+					"NoiseSettings": [
+						{
+						"Enabled": true,
+						"ImageType": 5,
+
+						"RandContrib": 0.5,
+						"RandSpeed": 100000.0,
+						"RandSize": 1000.0,
+						"RandDensity": 1,
+
+						"HorzWaveContrib":0.03,			
+						"HorzWaveStrength": 0.08,
+						"HorzWaveVertSize": 1.0,
+						"HorzWaveScreenSize": 1.0,
+						
+						"HorzNoiseLinesContrib": 1.0,
+						"HorzNoiseLinesDensityY": 0.01,
+						"HorzNoiseLinesDensityXY": 0.5,
+						
+						"HorzDistortionContrib": 1.0,
+						"HorzDistortionStrength": 0.002
+					}
+					],	
+                    "X": 0, 
+                    "Y": 0, 
+                    "Z": 50,
+                    "Pitch": -20, 
+                    "Roll": 0, 
+                    "Yaw": 0,
+                    "AttachLink": "base_link"
+				}
+            }
+        }
+    }
+}
